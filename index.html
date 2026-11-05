@@ -221,9 +221,23 @@ img{max-width:100%;height:auto}
 .guest-rows{display:grid;gap:10px}.guest-row{display:grid;grid-template-columns:minmax(0,1fr) 120px auto;gap:10px;align-items:center}.remove-guest{width:42px;height:42px;border:1px solid rgba(185,165,116,.35);background:rgba(3,10,6,.65);color:#d7c58e;font-size:24px;cursor:pointer}.btn-secondary{background:transparent!important;color:#d7c58e!important;border-color:rgba(185,165,116,.42)!important}
 @media(max-width:600px){.guest-row{grid-template-columns:minmax(0,1fr) 92px auto;gap:7px}.guest-row .field{font-size:16px!important;padding-left:12px!important;padding-right:10px!important}.remove-guest{width:38px;height:44px}.notice-scroll{padding:24px 20px}.notice-item{grid-template-columns:32px 1fr;gap:12px}.notice-icon{font-size:20px}.notice-item p{font-size:18px}.section-head .eyebrow{font-size:8px!important;line-height:1.6!important}}
 
+
+/* Final corrections: centered coordinate cards, complete menu and music control */
+#local .details{grid-template-columns:repeat(2,minmax(280px,420px))!important;justify-content:center!important;max-width:900px!important;margin-inline:auto!important}
+nav{max-width:100vw;overflow-x:auto;scrollbar-width:none;justify-content:center!important}
+nav::-webkit-scrollbar{display:none}nav a{flex:0 0 auto}
+.music-toggle{position:fixed;right:20px;bottom:20px;z-index:90;width:48px;height:48px;border:1px solid rgba(185,165,116,.55);border-radius:50%;background:rgba(3,10,6,.84);color:#d7c58e;display:grid;place-items:center;font:500 18px serif;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.34)}
+.music-toggle:hover{background:rgba(10,35,22,.94);color:#fff0c4}
+@media(max-width:900px){nav{justify-content:flex-start!important;padding-left:18px!important;padding-right:18px!important}#local .details{grid-template-columns:1fr!important;max-width:600px!important}.music-toggle{right:14px;bottom:14px;width:44px;height:44px}}
+
 </style>
 </head>
 <body>
+<audio id="siteMusic" loop preload="auto" playsinline>
+  <source id="siteMusicSource" src="musica.mp3" type="audio/mpeg">
+</audio>
+<button id="musicToggle" class="music-toggle" type="button" aria-label="Reproduzir música" title="Música">♪</button>
+
   <div id="arrivalVeil" aria-hidden="true" style="position:fixed;inset:0;z-index:99;background:radial-gradient(circle at 50% 42%,#0b291c 0%,#020604 42%,#000 100%);display:grid;place-items:center;pointer-events:none;transition:opacity 1.2s ease;">
     <div style="text-align:center;color:#d3c18b;padding:24px;font-family:'Cinzel Decorative','IM Fell English',serif;letter-spacing:.16em;text-transform:uppercase;font-size:clamp(10px,1.4vw,14px)">
       <div style="font-size:clamp(30px,6vw,64px);margin-bottom:16px;color:#d7c58e;text-shadow:0 0 32px rgba(40,132,81,.35)">MC</div>
@@ -232,7 +246,14 @@ img{max-width:100%;height:auto}
   </div>
 
 <nav aria-label="Navegação principal">
-<a href="#inicio">Início</a><a href="#festa">A festa</a><a href="#local">Local</a><span class="navmark">ϟ</span><a href="#presentes">Presentes</a><a href="#presenca">Presença</a><a href="#memorias">Memórias</a>
+<a href="#inicio">Início</a>
+<a href="#festa">A festa</a>
+<a href="#local">Coordenadas</a>
+<a href="#presenca">Presença</a>
+<a href="#traje">Traje</a>
+<a href="#presentes">Presentes</a>
+<a href="#galeria">Memórias</a>
+<a href="#avisos">Avisos</a>
 </nav>
 <main>
 <section class="hero" id="inicio">
@@ -253,6 +274,19 @@ img{max-width:100%;height:auto}
   <div class="scrollhint">ATRAVESSE OS PORTÕES <div style="font-size:22px;margin-top:6px">⌄</div></div>
 </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <section class="section" id="festa">
   <header class="section-head"><div class="eyebrow">Capítulo 1 · Além dos portões</div><h2>A noite em que a magia desperta</h2><div class="ornament">✦</div></header>
   <div class="parchment"><h3>Bem-vindos ao grande salão</h3><p>A partir daqui, deixe o mundo comum para trás. Corredores em verde profundo, reflexos de prata, luz de velas e antigos segredos conduzem você a uma celebração criada para os quinze anos de Maria Clara. Elegante, misteriosa e inesquecível.</p></div>
@@ -266,44 +300,8 @@ img{max-width:100%;height:auto}
   </div>
 </section>
 
-<section class="section" id="traje">
-  <header class="section-head"><div class="eyebrow">Capítulo 3 · O código de vestes</div><h2>Vista-se para a ocasião</h2><p>Sob a luz das velas, preto absoluto é o código da noite.</p><div class="ornament">✦</div></header>
-  <div class="dressbox"><div class="eyebrow">Dress code</div><div class="big">ALL BLACK</div><p>Traje de gala, inteiramente preto.</p><p class="no-glitter">Pedimos gentilmente que evite qualquer tipo de brilho.</p></div>
-</section>
-
-
-<section class="section" id="avisos">
-  <header class="section-head"><div class="eyebrow">Capítulo 4 · O pergaminho dos avisos</div><h2>Informações importantes para a noite</h2><p>Antes de atravessar os portões, guarde estes recados.</p><div class="ornament">✦</div></header>
-  <div class="notice-scroll">
-    <article class="notice-item"><span class="notice-icon">◷</span><p><strong>Não se atrase.</strong> Chegue no horário. Perder um minuto desta festa será imperdível.</p></article>
-    <article class="notice-item"><span class="notice-icon">▤</span><p>Teremos vários momentos importantes.</p></article>
-    <article class="notice-item"><span class="notice-icon">♜</span><p>Preste atenção no cerimonial.</p></article>
-    <article class="notice-item"><span class="notice-icon">♢</span><p>Vibre com a valsa e a abertura da pista.</p></article>
-    <article class="notice-item"><span class="notice-icon">♫</span><p>Curta os DJs e as surpresas.</p></article>
-    <article class="notice-item"><span class="notice-icon">♪</span><p>Cante com a banda.</p></article>
-    <article class="notice-item"><span class="notice-icon">⌁</span><p>Tire muitas fotos nos nossos espaços instagramáveis.</p></article>
-    <article class="notice-item"><span class="notice-icon">♧</span><p>Aproveite nossa lojinha recheada de lembranças.</p></article>
-    <article class="notice-item"><span class="notice-icon">✥</span><p>Aproveite muito as nossas delícias.</p></article>
-  </div>
-</section>
-
-<section class="section" id="presentes">
-  <header class="section-head"><div class="eyebrow">Capítulo 5 · A sala dos presentes</div><h2>Pequenos encantos para Maria Clara</h2><p>Sua presença já torna esta noite especial. Se quiser levar um carinho, reunimos algumas pistas sobre o universo de Maria Clara.</p><div class="ornament">♧</div></header>
-  <div class="gifts">
-    <article class="gift"><h3>Calçados</h3><p>Tamanho 36/37.</p></article>
-    <article class="gift"><h3>Vestuário</h3><p>Tamanho P.</p></article>
-    <article class="gift"><h3>Cores favoritas</h3><div class="swatches"><span class="swatch" style="background:#080908"></span><span class="swatch" style="background:#155438"></span><span class="swatch" style="background:#7d151e"></span><span class="swatch" style="background:#172b67"></span></div><p>Preto, verde, vermelho e azul.</p></article>
-    <article class="gift"><h3>Acessórios</h3><p>Cintos.</p></article>
-    <article class="gift"><h3>Hidratante & body splash</h3><p>Evitar fragrâncias florais.</p></article>
-    <article class="gift"><h3>Cuidados com o cabelo</h3><p>Produtos para cabelo.</p></article>
-    <article class="gift"><h3>Maquiagem</h3><p>Itens de maquiagem em geral.</p></article>
-    <article class="gift"><h3>Universos favoritos</h3><p>Harry Potter, Supernatural, Marvel e DC.</p></article>
-    <article class="gift"><h3>Uma última pista</h3><p>Prefira produtos sem aroma floral.</p></article>
-  </div>
-</section>
-
 <section class="section" id="presenca">
-  <header class="section-head"><div class="eyebrow">Capítulo 6 · O livro de presenças</div><h2>Confirme seu nome para esta noite</h2><p>Registre sua presença para que seu nome faça parte desta celebração.</p><div class="ornament">ϟ</div></header>
+  <header class="section-head"><div class="eyebrow">Capítulo 3 · O livro de presenças</div><h2>Confirme seu nome para esta noite</h2><p>Registre sua presença para que seu nome faça parte desta celebração.</p><div class="ornament">ϟ</div></header>
   <div class="split">
     <div class="split-panel"><div class="eyebrow">Confirmação de presença</div><h3>Seu nome no livro de convidados</h3><p>Informe o nome completo e a idade de cada pessoa que estará presente. O WhatsApp será aberto com a confirmação pronta para enviar à Camila.</p>
       <form class="rsvp-form" id="rsvpForm">
@@ -323,9 +321,45 @@ img{max-width:100%;height:auto}
     </div>
   </div>
 </section>
+
+<section class="section" id="traje">
+  <header class="section-head"><div class="eyebrow">Capítulo 4 · O código de vestes</div><h2>Vista-se para a ocasião</h2><p>Sob a luz das velas, preto absoluto é o código da noite.</p><div class="ornament">✦</div></header>
+  <div class="dressbox"><div class="eyebrow">Dress code</div><div class="big">ALL BLACK</div><p>Traje de gala, inteiramente preto.</p><p class="no-glitter">Pedimos gentilmente que evite qualquer tipo de brilho.</p></div>
+</section>
+
+<section class="section" id="presentes">
+  <header class="section-head"><div class="eyebrow">Capítulo 5 · A sala dos presentes</div><h2>Pequenos encantos para Maria Clara</h2><p>Sua presença já torna esta noite especial. Se quiser levar um carinho, reunimos algumas pistas sobre o universo de Maria Clara.</p><div class="ornament">♧</div></header>
+  <div class="gifts">
+    <article class="gift"><h3>Calçados</h3><p>Tamanho 36/37.</p></article>
+    <article class="gift"><h3>Vestuário</h3><p>Tamanho P.</p></article>
+    <article class="gift"><h3>Cores favoritas</h3><div class="swatches"><span class="swatch" style="background:#080908"></span><span class="swatch" style="background:#155438"></span><span class="swatch" style="background:#7d151e"></span><span class="swatch" style="background:#172b67"></span></div><p>Preto, verde, vermelho e azul.</p></article>
+    <article class="gift"><h3>Acessórios</h3><p>Cintos.</p></article>
+    <article class="gift"><h3>Hidratante & body splash</h3><p>Evitar fragrâncias florais.</p></article>
+    <article class="gift"><h3>Cuidados com o cabelo</h3><p>Produtos para cabelo.</p></article>
+    <article class="gift"><h3>Maquiagem</h3><p>Itens de maquiagem em geral.</p></article>
+    <article class="gift"><h3>Universos favoritos</h3><p>Harry Potter, Supernatural, Marvel e DC.</p></article>
+    <article class="gift"><h3>Uma última pista</h3><p>Prefira produtos sem aroma floral.</p></article>
+  </div>
+</section>
+
 <section class="section" id="galeria">
   <header class="section-head"><div class="eyebrow">Epílogo · Memórias da noite</div><h2>Onde a magia permanece</h2><p>Os melhores instantes da noite reunidos em um só lugar.</p><div class="ornament">✦</div></header>
   <div class="parchment"><h3>Toda grande noite deixa rastros de magia</h3><p>Fotografias, encontros e detalhes vistos pelos olhos de quem esteve presente. Um álbum coletivo para que a noite continue viva muito depois da última vela se apagar.</p></div>
+</section>
+
+<section class="section" id="avisos">
+  <header class="section-head"><div class="eyebrow">Capítulo 7 · O pergaminho dos avisos</div><h2>Informações importantes para a noite</h2><p>Antes de atravessar os portões, guarde estes recados.</p><div class="ornament">✦</div></header>
+  <div class="notice-scroll">
+    <article class="notice-item"><span class="notice-icon">◷</span><p><strong>Não se atrase.</strong> Chegue no horário. Perder um minuto dessa festa será imperdoável.</p></article>
+    <article class="notice-item"><span class="notice-icon">▤</span><p>Teremos vários momentos importantes.</p></article>
+    <article class="notice-item"><span class="notice-icon">♜</span><p>Preste atenção no cerimonial.</p></article>
+    <article class="notice-item"><span class="notice-icon">♢</span><p>Vibre com a valsa e a abertura da pista.</p></article>
+    <article class="notice-item"><span class="notice-icon">♫</span><p>Curta os DJs e as surpresas.</p></article>
+    <article class="notice-item"><span class="notice-icon">♪</span><p>Cante com a banda.</p></article>
+    <article class="notice-item"><span class="notice-icon">⌁</span><p>Tire muitas fotos nos nossos espaços instagramáveis.</p></article>
+    <article class="notice-item"><span class="notice-icon">♧</span><p>Aproveite nossa lojinha recheada de lembranças.</p></article>
+    <article class="notice-item"><span class="notice-icon">✥</span><p>Aproveite muito as nossas delícias.</p></article>
+  </div>
 </section>
 </main>
 <footer class="footer"><div class="brand">Maria Clara · XV</div><p>Que cada memória desta noite conserve um pouco de sua magia.</p><small>06 · 03 · 2027 &nbsp; ✦ &nbsp; CELEIRO FESTAS</small></footer>
@@ -343,7 +377,7 @@ const arrivalVeil=document.getElementById("arrivalVeil"); setTimeout(()=>{arriva
 const SUPABASE_URL = "";
 const SUPABASE_ANON_KEY = "";
 const BUCKET = "memorias";
-const target = new Date("2027-03-06T18h48:00-03:00").getTime();
+const target = new Date("2027-03-06T18:48:00-03:00").getTime();
 const $ = id => document.getElementById(id);
 const pad = n => String(n).padStart(2,"0");
 function countdown(){let d=Math.max(0,target-Date.now());$("days").textContent=String(Math.floor(d/86400000)).padStart(3,"0");$("hours").textContent=pad(Math.floor(d%86400000/3600000));$("minutes").textContent=pad(Math.floor(d%3600000/60000));$("seconds").textContent=pad(Math.floor(d%60000/1000))}
@@ -377,6 +411,26 @@ filesInput.addEventListener("change",()=>{preview.innerHTML="";const files=[...f
 $("uploadBtn").addEventListener("click",async()=>{const files=[...filesInput.files];if(!files.length){status.textContent="Escolha pelo menos uma fotografia antes de enviar.";return}if(!SUPABASE_URL||!SUPABASE_ANON_KEY){status.textContent="O álbum ainda não está disponível para envio. Tente novamente mais tarde.";return}status.textContent="Enviando fotografias…";let ok=0;for(const file of files){const safeName=`${Date.now()}-${Math.random().toString(36).slice(2)}-${file.name.replace(/[^a-zA-Z0-9._-]/g,"_")}`;try{const res=await fetch(`${SUPABASE_URL}/storage/v1/object/${BUCKET}/${safeName}`,{method:"POST",headers:{"Authorization":`Bearer ${SUPABASE_ANON_KEY}`,"apikey":SUPABASE_ANON_KEY,"Content-Type":file.type,"x-upsert":"false"},body:file});if(res.ok)ok++;}catch(err){}}
 status.textContent=`Envio concluído: ${ok} de ${files.length} arquivo(s) enviados.`;
 });
+</script>
+
+<script>
+(function(){
+  const audio=document.getElementById('siteMusic');
+  const btn=document.getElementById('musicToggle');
+  if(!audio||!btn) return;
+  audio.volume=0.28;
+  let userPaused=false;
+  const sync=()=>{btn.textContent=audio.paused?'♪':'Ⅱ';btn.setAttribute('aria-label',audio.paused?'Reproduzir música':'Pausar música');};
+  const tryPlay=()=>{if(userPaused)return;const p=audio.play();if(p&&p.catch)p.catch(()=>{});};
+  window.addEventListener('load',tryPlay,{once:true});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)tryPlay();});
+  const unlock=()=>{tryPlay();document.removeEventListener('pointerdown',unlock);document.removeEventListener('touchstart',unlock);document.removeEventListener('keydown',unlock);};
+  document.addEventListener('pointerdown',unlock,{passive:true});
+  document.addEventListener('touchstart',unlock,{passive:true});
+  document.addEventListener('keydown',unlock);
+  btn.addEventListener('click',(e)=>{e.stopPropagation();if(audio.paused){userPaused=false;audio.play().catch(()=>{});}else{userPaused=true;audio.pause();}sync();});
+  audio.addEventListener('play',sync);audio.addEventListener('pause',sync);sync();
+})();
 </script>
 </body>
 </html>
